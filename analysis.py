@@ -24,3 +24,10 @@ sns.lineplot(x=data['Date'], y=data['Temperature (°C)'], color='orange')
 plt.title("Temperature Trends Over Time")
 plt.xlabel("Date")
 plt.ylabel("Temperature (°C)")
+
+# Plot humidity trends over time
+plt.subplot(2, 2, 2)
+sns.lineplot(x=data['Date'], y=data['Humidity (%)'], color='blue')
+plt.title("Humidity Trends Over Time")
+plt.xlabel("Date")
+plt.ylabel("Humidity (%)")
