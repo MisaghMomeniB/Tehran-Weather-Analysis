@@ -14,3 +14,6 @@ print(data.describe())
 
 # Convert the Data column to datetime type
 data['Date'] = pd.to_datetime(data['Date'])
+
+# Set plot dimensions
+plt.figure(figsize=(12, 8))
