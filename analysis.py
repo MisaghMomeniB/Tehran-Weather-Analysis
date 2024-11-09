@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Reading the CSV file
-file_path = '/mnt/data/weather_data.csv'  # Path to the CSV file
+file_path = 'weather-csv.csv'  # Path to the CSV file
 data = pd.read_csv(file_path)
 
 # Initial data overview
