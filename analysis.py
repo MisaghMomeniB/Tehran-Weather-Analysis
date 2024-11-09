@@ -11,3 +11,6 @@ print("Initial Data Information : ")
 print(data.info())
 print("\nStatistical Summary of Data : ")
 print(data.describe())
+
+# Convert the Data column to datetime type
+data['Date'] = pd.to_datetime(data['Date'])
