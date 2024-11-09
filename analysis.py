@@ -38,3 +38,13 @@ sns.lineplot(x=data['Date'], y=data['Pressure (hPa)'], color='purple')
 plt.title("Pressure Trends Over TIme")
 plt.xlabel("Date")
 plt.ylabel("Humidity (%)")
+
+# Plot winds speed trends over time
+plt.subplot(2, 2, 4)
+sns.lineplot(x=data['Date'], y=data['Wind Speed (km/h)'], color='green')
+plt.title("Wind Speed Trends Over Time")
+plt.xlabel("Date")
+plt.ylabel("Wind Speed (km/h)")
+
+plt.tight_layout()
+plt.show()
