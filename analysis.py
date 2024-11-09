@@ -57,3 +57,10 @@ plt.xlabel("Weather Condition")
 plt.ylabel("Number of Days")
 plt.xticks(rotation=45)
 plt.show()
+
+# Plot correlation matrix between factors
+plt.figure(figsize=(10, 8))
+correlation_matrix = data.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", linewidths=0.5)
+plt.title("Correlation Matrix of Factors")
+plt.show()
