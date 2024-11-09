@@ -48,3 +48,12 @@ plt.ylabel("Wind Speed (km/h)")
 
 plt.tight_layout()
 plt.show()
+
+# Plot frequency of weather conditions
+plt.figure(figsize=(10, 6))
+sns.countplot(data['Weather Condition'], palette='viridis')
+plt.title("Frequency of Weather Conditions")
+plt.xlabel("Weather Condition")
+plt.ylabel("Number of Days")
+plt.xticks(rotation=45)
+plt.show()
