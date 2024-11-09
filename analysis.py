@@ -2,17 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Reading the CSV File
-file_path = 'weather-csv.csv'
+# Reading the CSV file
+file_path = '/mnt/data/weather_data.csv'  # Path to the CSV file
 data = pd.read_csv(file_path)
 
 # Initial data overview
-print("Initial Data Information : ")
+print("Initial Data Information:")
 print(data.info())
-print("\nStatistical Summary of Data : ")
+print("\nStatistical Summary of Data:")
 print(data.describe())
 
-# Convert the Data column to datetime type
+# Convert the Date column to datetime type
 data['Date'] = pd.to_datetime(data['Date'])
 
 # Set plot dimensions
@@ -35,11 +35,11 @@ plt.ylabel("Humidity (%)")
 # Plot pressure trends over time
 plt.subplot(2, 2, 3)
 sns.lineplot(x=data['Date'], y=data['Pressure (hPa)'], color='purple')
-plt.title("Pressure Trends Over TIme")
+plt.title("Pressure Trends Over Time")
 plt.xlabel("Date")
-plt.ylabel("Humidity (%)")
+plt.ylabel("Pressure (hPa)")
 
-# Plot winds speed trends over time
+# Plot wind speed trends over time
 plt.subplot(2, 2, 4)
 sns.lineplot(x=data['Date'], y=data['Wind Speed (km/h)'], color='green')
 plt.title("Wind Speed Trends Over Time")
