@@ -17,3 +17,10 @@ data['Date'] = pd.to_datetime(data['Date'])
 
 # Set plot dimensions
 plt.figure(figsize=(12, 8))
+
+# Plot temperature trends over time
+plt.subplot(2, 2, 1)
+sns.lineplot(x=data['Date'], y=data['Temperature (°C)'], color='orange')
+plt.title("Temperature Trends Over Time")
+plt.xlabel("Date")
+plt.ylabel("Temperature (°C)")
