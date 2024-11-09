@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Reading the CSV file
-file_path = 'weather-csv.csv'  # Path to the CSV file
+file_path = '/mnt/data/weather_data.csv'  # Path to the CSV file
 data = pd.read_csv(file_path)
 
 # Initial data overview
@@ -49,18 +49,21 @@ plt.ylabel("Wind Speed (km/h)")
 plt.tight_layout()
 plt.show()
 
-# Plot frequency of weather conditions
+# Updated countplot for weather conditions
 plt.figure(figsize=(10, 6))
-sns.countplot(data['Weather Condition'], palette='viridis')
+sns.countplot(y=data['Weather Condition'], palette='viridis', orient="h", order=data['Weather Condition'].value_counts().index)
 plt.title("Frequency of Weather Conditions")
-plt.xlabel("Weather Condition")
-plt.ylabel("Number of Days")
+plt.xlabel("Number of Days")
+plt.ylabel("Weather Condition")
 plt.xticks(rotation=45)
 plt.show()
 
-# Plot correlation matrix between factors
+# Selecting only numeric columns for correlation calculation
+numeric_data = data.select_dtypes(include=['float64', 'int64'])
+correlation_matrix = numeric_data.corr()
+
+# Plot the updated correlation matrix
 plt.figure(figsize=(10, 8))
-correlation_matrix = data.corr()
 sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", linewidths=0.5)
 plt.title("Correlation Matrix of Factors")
 plt.show()
