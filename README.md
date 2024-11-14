@@ -1,19 +1,8 @@
-__Hello My Friend 👋🏻__ <br>
-__I'm Misagh and I'm Glad You're Here 😉__
-
-# Tehran-Weather-Analysis 🐍
-
 ![Screenshot from 2024-11-09 18-38-59](https://github.com/user-attachments/assets/4af2c9fa-85ee-4241-848f-84ab35e1b608)
 ![Screenshot from 2024-11-09 18-38-53](https://github.com/user-attachments/assets/ad2518f4-dc97-4cc8-a021-9ea01bd8ed3b)
 ![Screenshot from 2024-11-09 18-38-45](https://github.com/user-attachments/assets/7df2b3f8-b551-4d84-bdd6-9574beb72996)
 
-
-In This Project, I Tried to Create a __Data Analysis__ With Chart Visualization Using Python and Its Related Libraries.
-# Does It Require Any Installation Steps or Prerequisites?
-
-`` python -m venv venv `` <br>
-`` pip install pandas seaborn matplotlib `` <br>
-# Line-by-line Code Analysis
+<br>
 
 ### Importing Libraries
 ```python
@@ -21,16 +10,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
-- **`pandas`**: Used for data manipulation and analysis. It helps with handling the CSV file, data cleaning, and data operations.
-- **`matplotlib.pyplot`**: A plotting library used to create static, animated, and interactive visualizations.
-- **`seaborn`**: Built on top of matplotlib, seaborn provides a high-level interface for drawing attractive and informative statistical graphics.
+- `pandas`: Used to load and manage data in a DataFrame.
+- `matplotlib.pyplot` and `seaborn`: Visualization libraries, where `seaborn` provides enhanced and easier-to-style plots.
 
-### Reading the CSV File
+### Loading Data
 ```python
 file_path = 'weather-csv.csv'  # Path to the CSV file
 data = pd.read_csv(file_path)
 ```
-- The CSV file located at `file_path` is read into a DataFrame called `data`. The `read_csv()` function reads the file and converts it into a tabular format that pandas can work with.
+- Sets the path to the CSV file (`weather-csv.csv`) and loads it into a `pandas` DataFrame named `data`.
 
 ### Initial Data Overview
 ```python
@@ -39,78 +27,73 @@ print(data.info())
 print("\nStatistical Summary of Data:")
 print(data.describe())
 ```
-- **`data.info()`**: Displays a concise summary of the DataFrame, including the number of non-null entries in each column, data types, and memory usage.
-- **`data.describe()`**: Provides statistical details of the numeric columns such as mean, standard deviation, min, max, and quartiles.
+- `data.info()` displays basic information such as column types, number of non-null values, and memory usage.
+- `data.describe()` provides a statistical summary, including the mean, standard deviation, and quartiles for each numeric column.
 
-### Converting Date Column to Datetime
+### Converting Date Column to Datetime Format
 ```python
 data['Date'] = pd.to_datetime(data['Date'])
 ```
-- This line converts the `Date` column to a `datetime` format. This is essential for time-based operations like plotting time series data.
+- Converts the `Date` column to a datetime format, enabling time-based plotting.
 
-### Plotting Temperature Trends
+### Setting Plot Dimensions
 ```python
 plt.figure(figsize=(12, 8))
+```
+- Sets the overall size of the figure to 12x8 inches, allowing sufficient space for subplots.
 
-# Plot temperature trends over time
+### Plotting Temperature Trends Over Time
+```python
 plt.subplot(2, 2, 1)
 sns.lineplot(x=data['Date'], y=data['Temperature (°C)'], color='orange')
 plt.title("Temperature Trends Over Time")
 plt.xlabel("Date")
 plt.ylabel("Temperature (°C)")
 ```
-- **`plt.figure(figsize=(12, 8))`**: Sets the figure size for the plots to be 12x8 inches.
-- **`plt.subplot(2, 2, 1)`**: Creates a 2x2 grid of subplots, and the current plot will occupy the first position (top-left).
-- **`sns.lineplot(x=data['Date'], y=data['Temperature (°C)'], color='orange')`**: Plots the temperature over time. The x-axis represents the date and the y-axis represents temperature in degrees Celsius.
-- **`plt.title()`, `plt.xlabel()`, `plt.ylabel()`**: These functions add titles and labels to the plot for clarity.
+- Sets up a 2x2 grid of subplots and creates the first subplot in the upper-left corner.
+- Uses `sns.lineplot` to plot temperature over time, setting `Date` as the x-axis and `Temperature (°C)` as the y-axis.
+- Adds labels and a title for clarity.
 
-### Plotting Humidity Trends
+### Plotting Humidity Trends Over Time
 ```python
-# Plot humidity trends over time
 plt.subplot(2, 2, 2)
 sns.lineplot(x=data['Date'], y=data['Humidity (%)'], color='blue')
 plt.title("Humidity Trends Over Time")
 plt.xlabel("Date")
 plt.ylabel("Humidity (%)")
 ```
-- **`plt.subplot(2, 2, 2)`**: This places the current plot in the second position (top-right) of the 2x2 grid.
-- **`sns.lineplot(x=data['Date'], y=data['Humidity (%)'], color='blue')`**: Plots the humidity trend over time using a blue line.
+- Creates the second subplot in the upper-right corner, plotting humidity over time with `Date` on the x-axis and `Humidity (%)` on the y-axis.
 
-### Plotting Pressure Trends
+### Plotting Pressure Trends Over Time
 ```python
-# Plot pressure trends over time
 plt.subplot(2, 2, 3)
 sns.lineplot(x=data['Date'], y=data['Pressure (hPa)'], color='purple')
 plt.title("Pressure Trends Over Time")
 plt.xlabel("Date")
 plt.ylabel("Pressure (hPa)")
 ```
-- **`plt.subplot(2, 2, 3)`**: Places this plot in the third position (bottom-left) of the 2x2 grid.
-- **`sns.lineplot(x=data['Date'], y=data['Pressure (hPa)'], color='purple')`**: Plots the pressure trend over time using a purple line.
+- Creates the third subplot in the lower-left corner, plotting pressure over time with `Date` on the x-axis and `Pressure (hPa)` on the y-axis.
 
-### Plotting Wind Speed Trends
+### Plotting Wind Speed Trends Over Time
 ```python
-# Plot wind speed trends over time
 plt.subplot(2, 2, 4)
 sns.lineplot(x=data['Date'], y=data['Wind Speed (km/h)'], color='green')
 plt.title("Wind Speed Trends Over Time")
 plt.xlabel("Date")
 plt.ylabel("Wind Speed (km/h)")
 ```
-- **`plt.subplot(2, 2, 4)`**: This places the plot in the fourth position (bottom-right) of the 2x2 grid.
-- **`sns.lineplot(x=data['Date'], y=data['Wind Speed (km/h)'], color='green')`**: Plots the wind speed trend over time using a green line.
+- Creates the fourth subplot in the lower-right corner, plotting wind speed over time.
 
-### Adjusting Layout and Showing the Plot
+### Adjusting Layout
 ```python
 plt.tight_layout()
 plt.show()
 ```
-- **`plt.tight_layout()`**: Automatically adjusts the subplots to fit within the figure area without overlapping.
-- **`plt.show()`**: Displays the plots.
+- `plt.tight_layout()` adjusts the spacing between subplots to avoid overlap.
+- `plt.show()` displays the figure with all four subplots.
 
-### Plotting the Weather Conditions
+### Frequency Plot for Weather Conditions
 ```python
-# Updated countplot for weather conditions
 plt.figure(figsize=(10, 6))
 sns.countplot(y=data['Weather Condition'], palette='viridis', orient="h", order=data['Weather Condition'].value_counts().index)
 plt.title("Frequency of Weather Conditions")
@@ -119,39 +102,26 @@ plt.ylabel("Weather Condition")
 plt.xticks(rotation=45)
 plt.show()
 ```
-- **`plt.figure(figsize=(10, 6))`**: Creates a new figure with size 10x6 inches for the weather condition plot.
-- **`sns.countplot(y=data['Weather Condition'], ...)`**: Creates a countplot (a bar plot that shows the frequency of weather conditions). The `y` parameter sets weather conditions on the y-axis. The `order` argument orders the bars based on the frequency of weather conditions.
-- **`plt.xticks(rotation=45)`**: Rotates the x-axis labels by 45 degrees to make them readable.
+- Creates a new figure of size 10x6 inches.
+- Uses `sns.countplot` to create a horizontal bar plot showing the frequency of each weather condition.
+- `data['Weather Condition'].value_counts().index` sorts the conditions in descending frequency order.
+- Sets labels for axes and rotates x-axis ticks for better readability.
+- Displays the figure.
 
-### Correlation Matrix of Numeric Data
+### Calculating and Plotting the Correlation Matrix
 ```python
-# Selecting only numeric columns for correlation calculation
 numeric_data = data.select_dtypes(include=['float64', 'int64'])
 correlation_matrix = numeric_data.corr()
 ```
-- **`data.select_dtypes(include=['float64', 'int64'])`**: Selects only the numeric columns (those of type float64 or int64) from the DataFrame for correlation analysis.
-- **`numeric_data.corr()`**: Calculates the correlation matrix for the numeric columns. The result shows how strongly the different variables (like temperature, humidity, etc.) are correlated with each other.
+- Selects only numeric columns (`float64` and `int64` types) from `data` to calculate correlations.
+- `numeric_data.corr()` computes the correlation matrix for the selected columns.
 
-### Plotting the Correlation Matrix
 ```python
-# Plot the updated correlation matrix
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", linewidths=0.5)
 plt.title("Correlation Matrix of Factors")
 plt.show()
 ```
-- **`plt.figure(figsize=(10, 8))`**: Creates a new figure with size 10x8 inches for the heatmap.
-- **`sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", linewidths=0.5)`**: Plots the correlation matrix as a heatmap. The `annot=True` adds numerical annotations in each cell of the matrix, and `cmap="coolwarm"` specifies the color scheme.
-- **`plt.title("Correlation Matrix of Factors")`**: Adds a title to the heatmap.
-- **`plt.show()`**: Displays the heatmap.
-
----
-
-### Summary of Actions
-1. **Data Inspection**: Prints basic information and statistical summary of the dataset.
-2. **Date Conversion**: Converts the "Date" column into a proper datetime format for time series analysis.
-3. **Plots Over Time**: Creates four subplots showing trends in temperature, humidity, pressure, and wind speed over time.
-4. **Weather Condition Frequency**: Shows a countplot to visualize the distribution of weather conditions.
-5. **Correlation Analysis**: Computes and visualizes the correlation matrix of the numeric variables.
-
-These steps are used to analyze and visualize the dataset, identifying trends, distributions, and relationships between weather-related variables.
+- Creates a new figure of size 10x8 inches.
+- Uses `sns.heatmap` to plot the correlation matrix, with color mapping (`coolwarm`) and annotations to display correlation values.
+- Adds a title and displays the correlation matrix plot.
